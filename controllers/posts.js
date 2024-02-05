@@ -1,13 +1,11 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 module.exports = {
   getProfile: async (req, res) => {
     console.log(req.user);
     try {
-      //Since we have a session each request (req) contains the logged-in users info: req.user
-      //console.log(req.user) to see everything
-      //Grabbing just the posts of the logged-in user
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
       res.render("profile.ejs", { posts: posts, user: req.user });
@@ -17,20 +15,14 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPost: async (req, res) => {
-    try {
-      //id parameter comes from the post routes
-      //router.get("/:id", ensureAuth, postsController.getPost);
-      //http://localhost:2121/post/631a7f59a3e56acfc7da286f
-      //id === 631a7f59a3e56acfc7da286f
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const posts = await Post.find()
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        .lean();
+      res.render("feed.ejs", {
+        posts: posts,
+        user: req.user,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -64,7 +56,7 @@ module.exports = {
         },
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/feed`); ///${req.params.id}
     } catch (err) {
       console.log(err);
     }
@@ -85,6 +77,68 @@ module.exports = {
       res.redirect("/feed");
     } catch (err) {
       res.redirect("/feed");
+    }
+  },
+
+  addComment: async (req, res) => {
+    try {
+      const { postId } = req.params;
+      const { text } = req.body;
+
+      // Find the user who is adding the comment
+      const user = await User.findById(req.user.id);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+
+      // Fetch the userName associated with the user
+      const username = user.userName; // Assuming the username is stored in a field called 'username'
+
+      const post = await Post.findById(postId);
+      if (!post) {
+        return res.status(404).send("Post not found");
+      }
+      // const Name = user.userName; // Assuming the username is stored in a field called 'username'
+      // console.log("User Name:", Name);
+
+      post.comments.push({
+        text: text,
+        user: req.user.id,
+        userName: username,
+        // Store the user's name with the comment
+      });
+
+      await post.save();
+
+      res.redirect(`/post/${postId}`); // Redirect to a page that displays the single post and its comments
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    }
+  },
+
+  // Delete a comment from a post
+  deleteComment: async (req, res) => {
+    try {
+      const { postId, commentId } = req.params;
+
+      const post = await Post.findById(postId);
+      if (!post) {
+        return res.status(404).send("Post not found");
+      }
+
+      const comment = post.comments.id(commentId);
+      if (!comment) {
+        return res.status(404).send("Comment not found");
+      }
+
+      comment.deleteOne();
+      await post.save();
+
+      res.redirect(`/post/${postId}`);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
     }
   },
 };
