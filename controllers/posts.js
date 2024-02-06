@@ -17,7 +17,7 @@ module.exports = {
     try {
       const posts = await Post.find()
         .populate("user")
-        .sort({ createdAt: "desc" })
+        .sort({ likes: -1 })
         .lean();
       res.render("feed.ejs", {
         posts: posts,
