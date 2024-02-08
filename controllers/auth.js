@@ -99,6 +99,8 @@ exports.postSignup = async (req, res, next) => {
     const user = new User({
       userName: req.body.userName,
       email: req.body.email,
+      numberPlate: req.body.numberPlate,
+      role: req.body.role,
       password: req.body.password,
     });
 

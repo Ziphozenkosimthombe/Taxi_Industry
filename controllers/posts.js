@@ -27,6 +27,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getTable: async (req, res) => {
+    try {
+      const texiItems = await User.find().sort({ number: 1 });
+      const itemsLeft = await User.countDocuments({ complete: false });
+      res.render("taxi.ejs", { posts: texiItems, left: itemsLeft });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary

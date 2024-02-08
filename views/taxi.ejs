@@ -4,22 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/taxi.css">
     <title>Document</title>
 </head>
 <body>
     <section class="rows">
-        <section class="column">
-            <h2>Enter the infomation about the taxi driver and the car</h2>
-            <form action="/api" method="POST" id="taxiForm">
-                <input type="text" placeholder="specialName" name="specialName">
-                <input type="text" placeholder="placeToDeliver" name="placeToDeliver" >
-                <input type="text" placeholder="numberPlate" name="numberPlate" >
-                <input type="number" placeholder="number" name="number" >
-                <input type="file" name="image">
-                <button type="submit">Submit</button>
-            </form>
-        </section>
         <section class="column__table">
            
             
@@ -28,7 +17,7 @@
             <table id="taxiTable">
                 <thead>
                     <tr>
-                        <th>DriversName</th>
+                        <th>UserName</th>
                         <th>placeToDeliver</th>
                         <th>numberPlate</th>
                         <th>Number</th>
@@ -38,30 +27,30 @@
                 </thead>
                 <tbody>
                     
-                    <% for(let i=0; i < info.length; i++) {%>
-                        <tr class='texi__table' data-id="<%=info[i]._id%>">
-                            <% if (info[i].complete === true) {%>
-                                <td class="completed"><%= info[i].specialName %></td>
-                                <td class="completed"><%= info[i].placeToDeliver %></td>
-                                <td class="completed"><%= info[i].numberPlate %></td>
-                                <td class="completed"><%= info[i].number %></td>
+                    <% for(let i=0; i < posts.length; i++) {%>
+                        <tr class='texi__table' data-id="<%=posts[i]._id%>">
+                            <% if (posts[i].complete === true) {%>
+                                <td class="completed"><%= posts[i].userName %></td>
+                                <td class="completed"><%= posts[i].placeToDeliver %></td>
+                                <td class="completed"><%= posts[i].numberPlate %></td>
+                                <td class="completed"><%= posts[i].number %></td>
                             <%} else{%>
-                                <td><%= info[i].specialName %></td>
-                                <td><%= info[i].placeToDeliver %></td>
-                                <td><%= info[i].numberPlate %></td>
-                                <td><%= info[i].number %></td>
+                                <td><%= posts[i].userName %></td>
+                                <td><%= posts[i].placeToDeliver %></td>
+                                <td><%= posts[i].numberPlate %></td>
+                                <td><%= posts[i].number %></td>
                             <%}%>
-                            <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
+                            <td><img src="<%= posts[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
                             <td class="fa fa-trash" id="delete"></td>
                             <td class="fa fa-check"></td>
                             <td class="fa fa-undo"></td>
-                            <td><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="/edit/<%= posts[i]._id%>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
         </section>
     </section>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <!-- <script type="text/javascript" src="/js/main.js"></script> -->
 </body>
 </html>
