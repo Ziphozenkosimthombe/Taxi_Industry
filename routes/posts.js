@@ -23,5 +23,6 @@ router.delete(
   ensureAuth,
   postsController.deleteComment,
 );
+router.delete("/deleteTable/:id", postsController.deleteTable);
 
 module.exports = router;

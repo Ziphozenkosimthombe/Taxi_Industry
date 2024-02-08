@@ -15,10 +15,7 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find()
-        .populate("user")
-        .sort({ likes: -1 })
-        .lean();
+      const posts = await Post.find().sort({ likes: -1 }).lean();
       res.render("feed.ejs", {
         posts: posts,
         user: req.user,
@@ -52,6 +49,19 @@ module.exports = {
       });
       console.log("Post has been added!");
       res.redirect("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  deleteTable: async (req, res) => {
+    try {
+      const user = User.findOneAndDelete({ _id: req.params.id });
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+      await user.deleteOne({ _id: req.params.id });
+      console.log("Deleted User");
+      res.redirect("/taxiTable");
     } catch (err) {
       console.log(err);
     }
