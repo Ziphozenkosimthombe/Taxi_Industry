@@ -30,10 +30,10 @@
                     <% for(let i=0; i < posts.length; i++) {%>
                         <tr class='texi__table' data-id="<%=posts[i]._id%>">
                             <% if (posts[i].complete === true) {%>
-                                <td class="completed"><%= posts[i].userName %></td>
-                                <td class="completed"><%= posts[i].placeToDeliver %></td>
-                                <td class="completed"><%= posts[i].numberPlate %></td>
-                                <td class="completed"><%= posts[i].number %></td>
+                                <td class="complete"><%= posts[i].userName %></td>
+                                <td class="complete"><%= posts[i].placeToDeliver %></td>
+                                <td class="complete"><%= posts[i].numberPlate %></td>
+                                <td class="complete"><%= posts[i].number %></td>
                             <%} else{%>
                                 <td><%= posts[i].userName %></td>
                                 <td><%= posts[i].placeToDeliver %></td>
@@ -41,14 +41,15 @@
                                 <td><%= posts[i].number %></td>
                             <%}%>
                             <td><img src="<%= posts[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
-                            <td>
-                                <form action="/post/deleteTable/<%= posts[i]._id %>?_method=DELETE" method="POST">
-                                    <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
+                            
+                           <td>
+                                <form
+                                    action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
+                                    method="POST"
+                                >
+                                    <button class="btn btn-primary fa fa-check" type="submit"></button>
                                 </form>
-                            </td>
-                            
-                            
-                            <td class="fa fa-check"></td>
+                           </td>
                             <td class="fa fa-undo"></td>
                             <td><a href="/edit/<%= posts[i]._id%>"><i class="fa fa-edit"></i></a></td>
                         </tr>
@@ -60,3 +61,4 @@
     <!-- <script type="text/javascript" src="/js/main.js"></script> -->
 </body>
 </html>
+

@@ -11,10 +11,11 @@ router.get("/:id", ensureAuth, postsController.getFeed);
 
 //Enables user to create post w/ cloudinary for media uploads
 router.post("/createPost", upload.single("file"), postsController.createPost);
+router.post("/:postId/comment", ensureAuth, postsController.addComment);
 
 //Enables user to like post. In controller, uses POST model to update likes by 1
 router.put("/likePost/:id", postsController.likePost);
-router.post("/:postId/comment", ensureAuth, postsController.addComment);
+router.put("/markComplete/:id", postsController.markComplete);
 
 //Enables user to delete post. In controller, uses POST model to delete post from MongoDB collection
 router.delete("/deletePost/:id", postsController.deletePost);
@@ -23,6 +24,5 @@ router.delete(
   ensureAuth,
   postsController.deleteComment,
 );
-router.delete("/deleteTable/:id", postsController.deleteTable);
 
 module.exports = router;

@@ -13,7 +13,11 @@
           <div class="card-body">
             <h5 class="card-title"><%= post.title %></h5>
             <p class="card-text"><%= post.caption %></p>
-            <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p> 
+            <% if (post.user && post.user.userName) { %>
+              <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
+            <% } else { %>
+              <p class="card-text">Created by: <strong>Unknown</strong></p>
+            <% } %> 
             <div class="d-flex justify-content-between">
               <form
                   class="col-1"
@@ -23,7 +27,7 @@
                   <button class="btn btn-primary fa fa-heart" type="submit"></button>
               </form>
               
-              <% if(post.user._id.toString() === user.id.toString()){ %>
+              <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
                 <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
                   <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
                 </form>

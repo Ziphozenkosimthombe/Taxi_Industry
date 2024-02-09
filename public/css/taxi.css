@@ -58,9 +58,9 @@ form {
   width: 50%;
 }
 
-td.completed {
+.complete {
+  color: green;
   text-decoration: line-through;
-  color: red;
 }
 
 td a {
