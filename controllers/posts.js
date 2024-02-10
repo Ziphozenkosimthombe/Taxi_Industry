@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 module.exports = {
   getProfile: async (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     try {
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
@@ -36,6 +36,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getEdit: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const itemsLeft = await User.find().sort({ number: 1 });
+      res.render("edit.ejs", { posts: itemsLeft, texiId: id });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -59,17 +68,24 @@ module.exports = {
   markComplete: async (req, res) => {
     try {
       await User.findOneAndUpdate(
-        {
-          userName: req.body.userName,
-          placeToDeliver: req.body.placeToDeliver,
-          number: req.body.number,
-        },
-        {
-          $set: { complete: true },
-        },
+        { _id: req.params.id },
+        { $set: { complete: true } },
       );
 
       console.log("Marked as complete");
+      res.redirect("/taxiTable");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  markUncomplete: async (req, res) => {
+    try {
+      await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { complete: false } },
+      );
+
+      console.log("Marked as uncomplete");
       res.redirect("/taxiTable");
     } catch (err) {
       console.log(err);
@@ -85,6 +101,35 @@ module.exports = {
       );
       console.log("Likes +1");
       res.redirect(`/feed`); ///${req.params.id}
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  updateEdit: async (req, res) => {
+    try {
+      console.log(req.body);
+      Object.keys(req.body).forEach((key) => {
+        if (
+          req.body[key] === null ||
+          req.body[key] === undefined ||
+          req.body[key] === ""
+        ) {
+          delete req.body[key];
+        }
+      });
+      const id = req.params.id;
+      const result = await User.findOneAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            number: req.body.number,
+            placeToDeliver: req.body.placeToDeliver,
+          },
+        },
+      );
+      console.log(result);
+      console.log("Updated");
+      res.redirect("/taxiTable");
     } catch (err) {
       console.log(err);
     }
