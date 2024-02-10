@@ -12,7 +12,6 @@ router.get("/:id", ensureAuth, postsController.getFeed);
 //Enables user to create post w/ cloudinary for media uploads
 router.post("/createPost", upload.single("file"), postsController.createPost);
 router.post("/:postId/comment", ensureAuth, postsController.addComment);
-router.post("/updateEdit/:id", postsController.updateEdit);
 
 //Enables user to like post. In controller, uses POST model to update likes by 1
 router.put("/likePost/:id", postsController.likePost);

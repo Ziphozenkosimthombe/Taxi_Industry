@@ -11,7 +11,7 @@ router.get("/profile", ensureAuth, postsController.getProfile);
 router.get("/feed", ensureAuth, postsController.getFeed);
 router.get("/taxiTable", ensureAuth, postsController.getTable);
 router.get("/edit/:id", ensureAuth, postsController.getEdit);
-
+router.post("/updateEdit/:id", postsController.updateEdit);
 //Auth Routes
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
