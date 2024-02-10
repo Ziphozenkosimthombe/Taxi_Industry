@@ -25,10 +25,10 @@
                   method="POST"
                 >
                   <button class="btn btn-primary fa fa-heart" type="submit"></button>
+
               </form>
-              
               <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
-                <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
+                <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
                   <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
                 </form>
               <% } %>

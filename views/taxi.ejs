@@ -43,14 +43,20 @@
                             <td><img src="<%= posts[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
                             
                            <td>
+                            <form
+                                action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
+                                method="POST"
+                            >
+                                <button class="btn btn-primary fa fa-check" type="submit"></button>
+                            </form>
+                           </td>
+                            <td>
                                 <form
-                                    action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
+                                    action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
                                     method="POST"
                                 >
-                                    <button class="btn btn-primary fa fa-check" type="submit"></button>
+                                    <button class="btn btn-danger fa fa-undo" type="submit"></button>
                                 </form>
-                           </td>
-                            <td class="fa fa-undo"></td>
                             <td><a href="/edit/<%= posts[i]._id%>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <% } %>
@@ -58,7 +64,6 @@
             </table>
         </section>
     </section>
-    <!-- <script type="text/javascript" src="/js/main.js"></script> -->
 </body>
 </html>
 
