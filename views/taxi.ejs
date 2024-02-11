@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/css/taxi.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/taxi.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <section class="rows">
-        <section class="column__table">
-           
-            
-            <h2>Texi driver name and Number plate</h2>
-            <h2>Car left on the rank: <%= left %></h2>
-            <table id="taxiTable">
-                <thead>
-                    <tr>
-                        <th>UserName</th>
-                        <th>placeToDeliver</th>
-                        <th>numberPlate</th>
-                        <th>Number</th>
-                        <th>Image</th>
-                        <th>Delete & Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <% for(let i=0; i < posts.length; i++) {%>
-                        <tr class='texi__table' data-id="<%=posts[i]._id%>">
-                            <% if (posts[i].complete === true) {%>
-                                <td class="complete"><%= posts[i].userName %></td>
-                                <td class="complete"><%= posts[i].placeToDeliver %></td>
-                                <td class="complete"><%= posts[i].numberPlate %></td>
-                                <td class="complete"><%= posts[i].number %></td>
-                            <%} else{%>
-                                <td><%= posts[i].userName %></td>
-                                <td><%= posts[i].placeToDeliver %></td>
-                                <td><%= posts[i].numberPlate %></td>
-                                <td><%= posts[i].number %></td>
-                            <%}%>
-                            <td><img src="<%= posts[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
-                            
-                           <td>
-                            <form
-                                action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
-                                method="POST"
-                            >
-                                <button class="btn btn-primary fa fa-check" type="submit"></button>
-                            </form>
-                           </td>
-                            <td>
-                                <form
-                                    action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
-                                    method="POST"
-                                >
-                                    <button class="btn btn-danger fa fa-undo" type="submit"></button>
-                                </form>
-                            <td><a href="/edit/<%= posts[i]._id%>"><i class="fa fa-edit"></i></a></td>
-                        </tr>
-                    <% } %>
-                </tbody>
-            </table>
-        </section>
-    </section>
-</body>
-</html>
+      <section class="column__table">
+        <h2>Texi driver name and Number plate</h2>
+        <h2>Car left on the rank: <%= left %></h2>
+        <table id="taxiTable">
+          <thead>
+            <tr>
+              <th>UserName</th>
+              <th>placeToDeliver</th>
+              <th>numberPlate</th>
+              <th>Number</th>
+              <th>Image</th>
+              <th>Delete & Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < posts.length; i++) {%>
+            <tr class="texi__table" data-id="<%=posts[i]._id%>">
+              <% if (posts[i].complete === true) {%>
+              <td class="complete"><%= posts[i].userName %></td>
+              <td class="complete"><%= posts[i].placeToDeliver %></td>
+              <td class="complete"><%= posts[i].numberPlate %></td>
+              <td class="complete"><%= posts[i].number %></td>
+              <%} else{%>
+              <td><%= posts[i].userName %></td>
+              <td><%= posts[i].placeToDeliver %></td>
+              <td><%= posts[i].numberPlate %></td>
+              <td><%= posts[i].number %></td>
+              <%}%>
+              <td>
+                <img
+                  src="<%= posts[i].image %>"
+                  alt="Taxi Driver Image"
+                  style="max-width: 100px; max-height: 100px"
+                />
+              </td>
 
+              <td>
+                <% if (user && user.role === 'rank manager') { %>
+                <form
+                  action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
+                  method="POST"
+                >
+                  <button
+                    class="btn btn-primary fa fa-check"
+                    type="submit"
+                  ></button>
+                </form>
+                <% } %>
+              </td>
+              <td>
+                <% if (user && user.role === 'rank manager') { %>
+                <form
+                  action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
+                  method="POST"
+                >
+                  <button
+                    class="btn btn-danger fa fa-undo"
+                    type="submit"
+                  ></button>
+                </form>
+                <% } %>
+              </td>
+              <td>
+                <% if (user && user.role === 'rank manager') { %>
+                <a href="/edit/<%= posts[i]._id%>"
+                  ><i class="fa fa-edit"></i
+                ></a>
+                <% } %>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </body>
+</html>

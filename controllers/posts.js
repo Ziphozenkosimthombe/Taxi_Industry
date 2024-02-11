@@ -31,7 +31,8 @@ module.exports = {
     try {
       const texiItems = await User.find().sort({ number: 1 });
       const itemsLeft = await User.countDocuments({ complete: false });
-      res.render("taxi.ejs", { posts: texiItems, left: itemsLeft });
+      const user = req.user;
+      res.render("taxi.ejs", { posts: texiItems, left: itemsLeft, user });
     } catch (err) {
       console.log(err);
     }
@@ -69,7 +70,7 @@ module.exports = {
     try {
       await User.findOneAndUpdate(
         { _id: req.params.id },
-        { $set: { complete: true } },
+        { $set: { complete: true } }
       );
 
       console.log("Marked as complete");
@@ -82,7 +83,7 @@ module.exports = {
     try {
       await User.findOneAndUpdate(
         { _id: req.params.id },
-        { $set: { complete: false } },
+        { $set: { complete: false } }
       );
 
       console.log("Marked as uncomplete");
@@ -97,7 +98,7 @@ module.exports = {
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
-        },
+        }
       );
       console.log("Likes +1");
       res.redirect(`/feed`); ///${req.params.id}
@@ -125,7 +126,7 @@ module.exports = {
             number: req.body.number,
             placeToDeliver: req.body.placeToDeliver,
           },
-        },
+        }
       );
       console.log(result);
       console.log("Updated");
