@@ -1,11 +1,22 @@
-<%- include('partials/header') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/output.css" rel="stylesheet">
+</head>
+<body>
+    <main class="h-14 bg-gradient-to-l from-green-500 to-purple-500">
+        <header class=" flex justify-around">
+            <a class="mt-4 text-base no-underline hover:underline" href="#about">About</a>
+            <a class="mt-4 text-base no-underline hover:underline" href="/login" > Login</a>
+            <a class="mt-4 text-base no-underline hover:underline" href="/signup" > Signup</a>
+        </header>
+    </main> 
+</body>
+</html>
 
-<main class="container">
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
-    </div>
-</main>
+
     
 
-<%- include('partials/footer') -%>
