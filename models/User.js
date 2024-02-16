@@ -9,6 +9,14 @@ const UserSchema = new mongoose.Schema({
   placeToDeliver: { type: String, default: "Harding" },
   number: { type: Number, default: 0 },
   complete: { type: Boolean },
+  image: {
+    type: String,
+    require: true,
+  },
+  cloudinaryId: {
+    type: String,
+    require: true,
+  },
   password: String,
 });
 
