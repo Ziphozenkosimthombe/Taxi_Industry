@@ -1,68 +1,76 @@
 <%- include('partials/header') -%>
-<a href="/logout" class="col-3 btn btn-primary">Logout</a>
-<a href="/profile" class="col-3 btn btn-primary">Profile</a>
-<a href="/taxiTable" class="col-3 btn btn-primary">TaxiTable</a>
 <div class="container">
-  <div class="row justify-content-center">
-    <% posts.forEach(function(post) { %>
-      <div class="col mt-4">
-        <div class="card" style="width: 18rem;">
-          <a href="<%= post.image %>">
-            <img class="card-img-top" src="<%= post.image %>" alt="Card image">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.title %></h5>
-            <p class="card-text"><%= post.caption %></p>
-            <% if (post.user && post.user.userName) { %>
-              <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
-            <% } else { %>
-              <p class="card-text">Created by: <strong>Unknown</strong></p>
-            <% } %> 
-            <div class="d-flex justify-content-between">
-              <form
-                  class="col-1"
-                  action="/post/likePost/<%= post._id %>?_method=PUT"
-                  method="POST"
-                >
-                  <button class="btn btn-primary fa fa-heart" type="submit"></button>
+  <header class="row justify-content-center align-items-center gap-3">
+    <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+    <a href="/profile" class="col-3 btn btn-primary">Profile</a>
+    <a href="/taxiTable" class="col-3 btn btn-primary">TaxiTable</a>
+  </header>
+  
+</div>
 
-              </form>
-              <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
-                <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
-                  <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="d-flex flex-wrap justify-content-center align-items-stretch">
+      <% posts.forEach(function(post) { %>
+        <div class="col-md-8 mt-4">
+          <div class="card h-100">
+            <a href="<%= post.image %>">
+              <img class="card-img-top" src="<%= post.image %>" alt="Card image" style="width:100%; height:100%;">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.caption %></p>
+              <% if (post.user && post.user.userName) { %>
+                <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
+              <% } else { %>
+                <p class="card-text">Created by: <strong>Unknown</strong></p>
+              <% } %> 
+              <div class="d-flex justify-content-between">
+                <form
+                    class="col-1"
+                    action="/post/likePost/<%= post._id %>?_method=PUT"
+                    method="POST"
+                  >
+                    <button class="btn btn-primary fa fa-heart" type="submit"></button>
+
                 </form>
-              <% } %>
-            </div>
-            <h3 class="">Likes: <%= post.likes %></h3>
-            
-            
-            <!-- Comments Section -->
-            <div class="comments-section">
-              <h5>Comments:</h5>
-              <ul class="list-unstyled">
-                <% post.comments.forEach(function(comment) { %>
-                  <li class="">
-                    <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
-                    <% if(comment.user == user.id){ %>
-                      <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
-                        <button type="submit" class="btn btn-danger fa fa-trash"></button>
-                      </form>
-                    <% } %>
-                  </li>
-                <% }); %>
-              </ul>
-              <!-- Form to Add Comment -->
-              <form action="/post/<%= post._id %>/comment" method="post">
-                <div class="form-group">
-                  <input type="text" name="text" placeholder="Add a comment" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Add Comment</button>
-              </form>
+                <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
+                  <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
+                    <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
+                  </form>
+                <% } %>
+              </div>
+              <h3 class="">Likes: <%= post.likes %></h3>
+
+
+              <!-- Comments Section -->
+              <div class="comments-section">
+                <h5>Comments:</h5>
+                <ul class="list-unstyled">
+                  <% post.comments.forEach(function(comment) { %>
+                    <li class="">
+                      <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
+                      <% if(comment.user == user.id){ %>
+                        <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
+                          <button type="submit" class="btn btn-danger fa fa-trash"></button>
+                        </form>
+                      <% } %>
+                    </li>
+                  <% }); %>
+                </ul>
+                <!-- Form to Add Comment -->
+                <form action="/post/<%= post._id %>/comment" method="post">
+                  <div class="form-group">
+                    <input type="text" name="text" placeholder="Add a comment" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Add</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% }); %>
+      <% }); %>
+    </div>
   </div>
 </div>
 
