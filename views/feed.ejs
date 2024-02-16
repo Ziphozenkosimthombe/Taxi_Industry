@@ -14,12 +14,18 @@
       <% posts.forEach(function(post) { %>
         <div class="col-md-8 mt-4">
           <div class="card h-100">
+            <img
+                  src="<%= post.user.image %>"
+                  alt="Taxi Driver Image"
+                  style="border-radius: 75px; width: 100px; height: 100px;"
+                />
+              <p class="card-text"><%= post.caption %></p>
             <a href="<%= post.image %>">
               <img class="card-img-top" src="<%= post.image %>" alt="Card image" style="width:100%; height:100%;">
             </a>
             <div class="card-body">
-              <h5 class="card-title"><%= post.title %></h5>
-              <p class="card-text"><%= post.caption %></p>
+              
+              
               <% if (post.user && post.user.userName) { %>
                 <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
               <% } else { %>
