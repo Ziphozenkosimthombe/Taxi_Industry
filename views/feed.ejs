@@ -1,83 +1,103 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <header class="row justify-content-center align-items-center gap-3">
-    <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-    <a href="/profile" class="col-3 btn btn-primary">Profile</a>
-    <a href="/taxiTable" class="col-3 btn btn-primary">TaxiTable</a>
-  </header>
-  
-</div>
+<body class="bg-secondary">
 
-<div class="container">
-  <div class="row justify-content-center align-items-center">
-    <div class="d-flex flex-wrap justify-content-center align-items-stretch">
-      <% posts.forEach(function(post) { %>
-        <div class="col-md-8 mt-4">
-          <div class="card h-100">
-            <img
-                  src="<%= post.user.image %>"
-                  alt="Taxi Driver Image"
-                  style="border-radius: 75px; width: 100px; height: 100px;"
-                />
-              <p class="card-text"><%= post.caption %></p>
-            <a href="<%= post.image %>">
-              <img class="card-img-top" src="<%= post.image %>" alt="Card image" style="width:100%; height:100%;">
-            </a>
-            <div class="card-body">
-              
-              
-              <% if (post.user && post.user.userName) { %>
-                <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
-              <% } else { %>
-                <p class="card-text">Created by: <strong>Unknown</strong></p>
-              <% } %> 
-              <div class="d-flex justify-content-between">
-                <form
-                    class="col-1"
-                    action="/post/likePost/<%= post._id %>?_method=PUT"
-                    method="POST"
-                  >
-                    <button class="btn btn-primary fa fa-heart" type="submit"></button>
-
-                </form>
-                <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
-                  <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
-                    <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
-                  </form>
-                <% } %>
+  <div class="container">
+      <header class="navbar navbar-expand-lg navbar-light  fixed-top border">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="/feed">
+                  <img src="/imgs/default.png" alt="logo-taxi" sizes="32x32" style="width: 4rem; border-radius: 5rem" />
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse mt-3" id="navbarNav">
+                  <ul class="navbar-nav d-flex justify-content-center justify-content-lg-between w-100">
+                      <li class="nav-item">
+                          <a class="nav-link" href="/logout">LOGOUT</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/taxiTable">TAXTABLE</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/profile">PROFILE</a>
+                      </li>
+                  </ul>
               </div>
-              <h3 class="">Likes: <%= post.likes %></h3>
-
-
-              <!-- Comments Section -->
-              <div class="comments-section">
-                <h5>Comments:</h5>
-                <ul class="list-unstyled">
-                  <% post.comments.forEach(function(comment) { %>
-                    <li class="">
-                      <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
-                      <% if(comment.user == user.id){ %>
-                        <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
-                          <button type="submit" class="btn btn-danger fa fa-trash"></button>
-                        </form>
-                      <% } %>
-                    </li>
-                  <% }); %>
-                </ul>
-                <!-- Form to Add Comment -->
-                <form action="/post/<%= post._id %>/comment" method="post">
-                  <div class="form-group">
-                    <input type="text" name="text" placeholder="Add a comment" class="form-control">
-                  </div>
-                  <button type="submit" class="btn btn-primary w-100">Add</button>
-                </form>
-              </div>
-            </div>
           </div>
-        </div>
-      <% }); %>
-    </div>
+      </header>
+      <div style="margin-top: 100px;">
+        <div class="row justify-content-center align-items-center">
+            <div class="d-flex flex-wrap justify-content-center align-items-stretch">
+              <% posts.forEach(function(post) { %>
+                <div class="col-md-8 mt-4">
+                  <div class="card h-100">
+                    <img
+                          src="<%= post.user.image %>"
+                          alt="Taxi Driver Image"
+                          style="border-radius: 75px; width: 100px; height: 100px;"
+                        />
+                      <p class="card-text"><%= post.caption %></p>
+                    <a href="<%= post.image %>">
+                      <img class="card-img-top" src="<%= post.image %>" alt="Card image" style="width:100%; height:100%;">
+                    </a>
+                    <div class="card-body">
+
+
+                      <% if (post.user && post.user.userName) { %>
+                        <p class="card-text">Created by: <strong><%= post.user.userName %></strong></p>
+                      <% } else { %>
+                        <p class="card-text">Created by: <strong>Unknown</strong></p>
+                      <% } %> 
+                      <div class="d-flex justify-content-between">
+                        <form
+                            class="col-1"
+                            action="/post/likePost/<%= post._id %>?_method=PUT"
+                            method="POST"
+                          >
+                            <button class="btn btn-primary fa fa-heart" type="submit"></button>
+                      
+                        </form>
+                        <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
+                          <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
+                          </form>
+                        <% } %>
+                      </div>
+                      <h3 class="">Likes: <%= post.likes %></h3>
+                    
+                    
+                      <!-- Comments Section -->
+                      <div class="comments-section">
+                        <h5>Comments:</h5>
+                        <ul class="list-unstyled">
+                          <% post.comments.forEach(function(comment) { %>
+                            <li class="">
+                              <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
+                              <% if(comment.user == user.id){ %>
+                                <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
+                                  <button type="submit" class="btn btn-danger fa fa-trash"></button>
+                                </form>
+                              <% } %>
+                            </li>
+                          <% }); %>
+                        </ul>
+                        <!-- Form to Add Comment -->
+                        <form action="/post/<%= post._id %>/comment" method="post">
+                          <div class="form-group">
+                            <input type="text" name="text" placeholder="Add a comment" class="form-control">
+                          </div>
+                          <button type="submit" class="btn btn-primary w-100">Add</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          </div>  
+      </div>  
   </div>
-</div>
+</body>
 
 <%- include('partials/footer') -%>
