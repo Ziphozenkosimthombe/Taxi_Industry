@@ -37,7 +37,6 @@ module.exports = {
         console.log("Email sent: ", info.response);
         return res.send('Thank you for your message. We will get back to you soon!');
       }
-    });
-    
+    });    
   }
 };
