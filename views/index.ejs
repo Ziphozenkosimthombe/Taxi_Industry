@@ -3,24 +3,30 @@
    style="background-image: url('https://images.caxton.co.za/wp-content/uploads/sites/49/2018/10/VRKN58661.jpg'); background-repeat: no-repeat; background-size: cover;
    height: 100%">
         <div class="container">
-            <header class="navbar navbar-expand-lg navbar-light  fixed-top border">
+            <header class="navbar navbar-expand-lg navbar-light bg-dark  fixed-top border">
                 <div class="container-fluid">
-                    <h1 class="navbar-brand fw-bold fs-3">Taxi Industry</h1>
+                    <h1 class="navbar-brand fw-bold fs-1 text-white">Taxi Industry</h1>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse mt-3" id="navbarNav">
-                    <ul class="navbar-nav  d-flex justify-content-lg-between w-100">
+                    <ul class="navbar-nav d-flex  justify-content-center w-100 fw-bold fs-4" style="margin-right: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">LOGOUT</a>
+                            <a class="nav-link text-white" href="/logout">LOGOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">LOGIN</a>
+                            <a class="nav-link text-white" href="/login">LOGIN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/signup">SIGNUP</a>
+                            <a class="nav-link text-white" href="/signup">SIGNUP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link text-white">ABOUT</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#contact" class="nav-link text-white">CONTACT</a>
                         </li>
                     </ul>
                 </div>
@@ -31,4 +37,4 @@
 
         </div>
    </body>
-<%- include('partials/footer') -%>
+<%- include('partials/index-footer') -%>
