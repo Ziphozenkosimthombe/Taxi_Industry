@@ -12,7 +12,7 @@
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse mt-3" id="navbarNav">
-                  <ul class="navbar-nav d-flex justify-content-center  w-100">
+                  <ul class="navbar-nav d-flex justify-content-lg-between  w-100">
                       <li class="nav-item">
                           <a class="nav-link" href="/logout">LOGOUT</a>
                       </li>
@@ -85,7 +85,7 @@
                         <!-- Form to Add Comment -->
                         <form action="/post/<%= post._id %>/comment" method="post">
                           <div class="form-group">
-                            <input type="text" name="text" placeholder="Add a comment" class="form-control">
+                            <input type="text" name="text" placeholder="Add a comment" class="form-control" required>
                           </div>
                           <button type="submit" class="btn btn-primary w-100">Add</button>
                         </form>
