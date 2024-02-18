@@ -77,13 +77,13 @@
                       <!-- Comments Section -->
                       <div class="comments-section">
                         <h5>Comments:</h5>
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled ">
                           <% post.comments.forEach(function(comment) { %>
-                            <li class="">
+                            <li class="d-flex ">
                               <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
                               <% if(comment.user == user.id){ %>
                                 <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
-                                  <button type="submit" class="btn btn-danger fa fa-trash"></button>
+                                  <button type="submit" class="btn btn-danger fa fa-trash mx-5"></button>
                                 </form>
                               <% } %>
                             </li>
