@@ -1,7 +1,7 @@
 {
-  "name": "fullstack-template",
+  "name":"taxi-industry-social-media",
   "version": "1.0.0",
-  "description": "Starter template for future projects",
+  "description": "main thing to help rank mananger to be able to write or group the taxis in the application by filling the form and fetch the drivers data when he needs it's.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
