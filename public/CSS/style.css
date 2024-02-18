@@ -1,0 +1,7 @@
+.hover-underline{
+    transition: all 0.2s;
+}
+.hover-underline:hover{
+    text-decoration: underline;
+    font-size: 2rem;
+}
