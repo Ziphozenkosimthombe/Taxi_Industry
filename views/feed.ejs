@@ -1,11 +1,11 @@
 <%- include('partials/header') -%>
 <body class="bg-secondary">
 
-  <div class="container">
+  <main class="container">
       <header class="navbar navbar-expand-lg navbar-light  fixed-top border bg-white">
           <div class="container-fluid">
               <a class="navbar-brand" href="/feed">
-                  <img src="/imgs/default.png" alt="logo-taxi" sizes="32x32" style="width: 4rem; border-radius: 5rem" />
+                  <img src="/imgs/default.png" alt="logo-taxi" sizes="32x32" class="logo__taxi"/>
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,19 +14,25 @@
               <div class="collapse navbar-collapse mt-3" id="navbarNav">
                   <ul class="navbar-nav d-flex justify-content-lg-between  w-100 ">
                       <li class="nav-item hover-underline">
-                          <a class="nav-link" href="/logout">LOGOUT</a>
+                          <a class="nav-link fs-3 mx-5 fw-bold" href="/logout">LOGOUT</a>
                       </li>
                       <li class="nav-item hover-underline">
-                          <a class="nav-link" href="/taxiTable">TAXTABLE</a>
+                          <a class="nav-link  fs-3 fw-bold" href="/taxiTable">TAXTABLE</a>
                       </li>
                       <li class="nav-item hover-underline">
-                          <a class="nav-link " href="/profile">PROFILE</a>
+                          <a class="nav-link " href="/profile">
+                            <img
+                              class="mx-4  profile__img"
+                              src="<%= user.image %>"
+                              alt="Taxi Driver Image"
+                            />
+                          </a>
                       </li>
                   </ul>
               </div>
           </div>
       </header>
-      <div style="margin-top: 100px;">
+      <section class="post__section">
         <div class="row justify-content-center align-items-center">
             <div class="d-flex flex-wrap justify-content-center align-items-stretch">
               <% posts.forEach(function(post) { %>
@@ -34,10 +40,10 @@
                   <div class="card h-100">
                     <a href="<%= post.user.image %>" class="d-flex text-decoration-none">
                       <img
-                        class="mx-4"
+                        class="mx-4 driver__img"
                         src="<%= post.user.image %>"
                         alt="Taxi Driver Image"
-                        style="border-radius: 75px; width: 100px; height: 100px;"
+                        
                       />
                       <% if (post.user && post.user.userName) { %>
                         <p class="card-text mt-2 fs-3 text-dark hover-underline"><strong><%= post.user.userName %></strong></p>
@@ -47,7 +53,7 @@
                     </a>
                       <p class="card-text mx-4 mt-3"><%= post.caption %></p>
                     <a href="<%= post.image %>">
-                      <img class="card-img-top" src="<%= post.image %>" alt="Card image" style="width:100%; height:100%;">
+                      <img class="card-img-top post__img" src="<%= post.image %>" alt="Card image">
                     </a>
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
@@ -56,7 +62,7 @@
                             action="/post/likePost/<%= post._id %>?_method=PUT"
                             method="POST"
                           >
-                            <button class="btn btn-primary fa fa-heart" type="submit"></button>
+                            <button class=" btn btn-primary fa fa-heart heart__btn" type="submit"></button>
                       
                         </form>
                         <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
@@ -97,8 +103,8 @@
               <% }); %>
             </div>
           </div>  
-      </div>  
-  </div>
+      </section>  
+    </main>
 </body>
 
 <%- include('partials/footer') -%>

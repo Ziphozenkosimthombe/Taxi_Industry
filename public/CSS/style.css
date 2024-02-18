@@ -5,3 +5,30 @@
     text-decoration: underline;
     font-size: 2rem;
 }
+
+.profile__img,
+.logo__taxi{
+    width: 4rem; border-radius: 5rem;
+}
+
+.post__section{
+    margin-top: 150px;
+}
+
+.driver__img{
+    border-radius: 75px; width: 100px; height: 100px;
+}
+
+.post__img{
+    width:100%; height:100%;
+}
+
+.fa-heart{
+    color: red;
+    
+    
+}
+
+ .fa-heart:hover{
+    color: red;
+ }
