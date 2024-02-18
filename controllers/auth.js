@@ -118,7 +118,7 @@ exports.postSignup = async (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect("/feed", {user: req.user});
+      res.redirect("/feed");
     });
   } catch (err) {
     return next(err);
