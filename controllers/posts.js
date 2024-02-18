@@ -111,7 +111,6 @@ module.exports = {
   },
   updateEdit: async (req, res) => {
     try {
-      console.log(req.body);
       Object.keys(req.body).forEach((key) => {
         if (
           req.body[key] === null ||
@@ -131,7 +130,6 @@ module.exports = {
           },
         }
       );
-      console.log(result);
       console.log("Updated");
       res.redirect("/taxiTable");
     } catch (err) {

@@ -69,8 +69,6 @@ exports.getSignup = (req, res) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
-    console.log("Request body:", req.body);
-    console.log("Request file:", req.file);
     // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
     const validationErrors = [];
