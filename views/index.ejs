@@ -55,19 +55,19 @@
                 <h1 class="text-uppercase text-white fs-1 fw-bold">Contact</h1>
                 <form action="/post/contact" method="POST">
                   <div class="mb-3">
-                    <label for="email" class="form-label text-white fs-4 fw-bold">Your Email:</label><br>
-                    <input class="form-control" type="email" id="email" name="email" required><br>
+                    <label for="email" class="form-label text-white fs-4 fw-bold">Your Email:</label>
+                    <input class="form-control" type="email" id="email" name="email" required autocomplete="off">
                   </div>
                   
                   
                   <div class="mb-3">
                     <label for="subject" class="form-label text-white fs-4 fw-bold">Subject:</label>
-                    <input class="form-control" type="text" id="subject" name="subject" required>
+                    <input class="form-control" type="text" id="subject" name="subject" required autocomplete="off">
                   </div>
                   
                   <div class="mb-3">
                     <label for="message" class="form-label text-white fs-4 fw-bold">Message</label>
-                    <textarea class="form-control" id="message" name="message"></textarea>
+                    <textarea class="form-control" id="message" name="message" required autocomplete="off"></textarea>
                   </div>
                   <button type="submit" class="btn btn-primary w-100" value="Upload">Submit</button>
                 </form>

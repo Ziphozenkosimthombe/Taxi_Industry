@@ -92,7 +92,7 @@
                         <!-- Form to Add Comment -->
                         <form action="/post/<%= post._id %>/comment" method="post">
                           <div class="form-group">
-                            <input type="text" name="text" placeholder="Add a comment" class="form-control" required>
+                            <input type="text" name="text" placeholder="Add a comment" class="form-control" required autocomplete="off">
                           </div>
                           <button type="submit" class="btn btn-primary w-100">Add</button>
                         </form>
