@@ -107,11 +107,13 @@ exports.postSignup = async (req, res, next) => {
       image: result.secure_url,
       cloudinaryId: result.public_id,
       role: req.body.role,
-
+      complete: false,
       password: req.body.password,
     });
+    const itemsLeft = await User.countDocuments({ complete: false });
 
     await user.save();
+
     req.logIn(user, (err) => {
       if (err) {
         return next(err);

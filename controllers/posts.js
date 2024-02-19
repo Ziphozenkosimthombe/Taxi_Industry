@@ -36,7 +36,7 @@ module.exports = {
       const texiItems = await User.find().sort({ number: 1 });
       const itemsLeft = await User.countDocuments({ complete: false });
       const user = req.user;
-      res.render("taxi.ejs", { posts: texiItems, left: itemsLeft, user });
+      res.render("taxi.ejs", { posts: texiItems, left:itemsLeft, user });
     } catch (err) {
       console.log(err);
     }

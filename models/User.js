@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   role: { type: String, enum: ["driver", "rank manager"] },
   placeToDeliver: { type: String, default: "Harding" },
   number: { type: Number, default: 0 },
-  complete: { type: Boolean },
+  complete: {type: Boolean, default: false},
   image: {
     type: String,
     require: true,
