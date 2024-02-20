@@ -38,6 +38,8 @@ This the Taxi Social media application, it's will help the drivers to connect mo
 - [MongoDb](https://www.mongodb.com/) - an open source NoSQL database management program.
 - [Nodemailer](https://nodemailer.com/) - Nodejs application module.
 - [Bcrypt](https://bcrypt-generator.com/) - A library to help with hash passwords.
+- [Render](https://render.com) - projectc hosting platform.
+- [Namecheap](https://www.namecheap.com/) - getting the domain name form my project
 
 ### What I learned
 
