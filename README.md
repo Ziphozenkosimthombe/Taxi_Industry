@@ -20,7 +20,7 @@ This the Taxi Social media application, it's will help the drivers to connect mo
 ### Links
 
 - Code URL: [code](https://github.com/Ziphozenkosimthombe/Taxi_Industry.git)
-- Live Site URL: [taxi-industry](taxi-industry.me)
+- Live Site URL: [taxi-industry](https://taxi-industry.me)
 
 ## My process
 
