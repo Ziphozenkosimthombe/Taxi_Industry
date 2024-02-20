@@ -1,7 +1,7 @@
 # Taxi Industry Socila Media.
 
 This the Taxi Social media application, it's will help the drivers to connect more easily, But it will help taxi Rank Mananger the most, he will be able to collect the drivers information easy from the database without writing each drivers information in the book.
-![](./public/imgs/Screen.mp4)
+![](./public/imgs/Screenshot-2.png)
 
 ## Table of contents
 
@@ -40,29 +40,105 @@ This the Taxi Social media application, it's will help the drivers to connect mo
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+These was my first biggest full stack application i use to build small full stack application so there so much things that i have learn while i was building the project.I have learn how to use Authentication in node.js using the passport.js so i decided to use passport-local because it much more easy to understand and it straight foward.
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
+exports.postSignup = async (req, res, next) => {
+  try {
+    // Upload image to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+    const validationErrors = [];
+    if (!validator.isEmail(req.body.email))
+      validationErrors.push({ msg: "Please enter a valid email address." });
+    if (!validator.isLength(req.body.password, { min: 8 }))
+      validationErrors.push({
+        msg: "Password must be at least 8 characters long",
+      });
+    if (req.body.password !== req.body.confirmPassword)
+      validationErrors.push({ msg: "Passwords do not match" });
+
+    if (validationErrors.length) {
+      req.flash("errors", validationErrors);
+      return res.redirect("../signup");
+    }
+    req.body.email = validator.normalizeEmail(req.body.email, {
+      gmail_remove_dots: false,
+    });
+
+    const existingUser = await User.findOne({
+      $or: [{ email: req.body.email }, { userName: req.body.userName }],
+    });
+
+    if (existingUser) {
+      req.flash("errors", {
+        msg: "Account with that email address or username already exists.",
+      });
+      return res.redirect("../signup");
+    }
+
+    const user = new User({
+      userName: req.body.userName,
+      email: req.body.email,
+      numberPlate: req.body.numberPlate,
+      image: result.secure_url,
+      cloudinaryId: result.public_id,
+      role: req.body.role,
+      complete: false,
+      password: req.body.password,
+    });
+    const itemsLeft = await User.countDocuments({ complete: false });
+
+    await user.save();
+
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/feed");
+    });
+  } catch (err) {
+    return next(err);
+  }
 };
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+On my front-end side i did't write the javascript i only have css so what i learn is this amazing module call 'method-override' it just allows me to use HTTP verbs such as PUT or DELETE in places where the client doesn't support it, so method-override it just make my life and my work more easy.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```html
+<form
+  class="col-1"
+  action="/post/likePost/<%= post._id %>?_method=PUT"
+  method="POST">
+  <button class="btn btn-primary fa fa-heart heart__btn" type="submit"></button>
+</form>
+```
+
+I have also learn how to use the 'Bcrypt' libary that make hash passwork on my database side, so that i can not be able to see the users password.
+
+```js
+UserSchema.pre("save", function save(next) {
+  const user = this;
+  if (!user.isModified("password")) {
+    return next();
+  }
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if (err) {
+        return next(err);
+      }
+      user.password = hash;
+      next();
+    });
+  });
+});
+```
+
+I also have try to take the chance implementing the nodemailer on my project and i found that very intresting and it was more easy to learn it and emplement it on my project and it work very well.
+
+Another thing that i learn is to use bootstrap CSS framework for making the responsive website i was thinking i will found it more hard but when i start to implement it was very easy to learn and i found it be my best CSS Framewrok that i can use for my projects and make me not writing the many lines and CSS code, and save me more much time.
 
 ### Continued development
 
