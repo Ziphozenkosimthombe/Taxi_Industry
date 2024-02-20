@@ -32,7 +32,7 @@ This the Taxi Social media application, it's will help the drivers to connect mo
 - [node.js](https://nodejs.org/) - Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 - [express.js](https://expressjs.com/) - Node.js web application framework.
-- [Cloudinary](https://cloudinary.com/) - store the images and it as a URL.
+- [Cloudinary](https://cloudinary.com/) - store the images and get it as a URL.
 - [Passport.js](https://www.passportjs.org/) - authentication middleware for Node.js.
 - [MongoDb](https://www.mongodb.com/) - an open source NoSQL database management program.
 - [Nodemailer](https://nodemailer.com/) - Nodejs application module.
