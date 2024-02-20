@@ -11,9 +11,10 @@ This the Taxi Social media application, it's will help the drivers to connect mo
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+  - [Insatll it Local](#install-it-local)
+  - [Things To Add](#things-to-add)
+  - [Run](#run)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -142,33 +143,30 @@ Another thing that i learn is to use bootstrap CSS framework for making the resp
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+I will still continue develop my project and put more technologys that will make my work more easy like ReactJs when i am more comfortable with it i will use ReactJs as a templete engine instaed of ejs. I will also put more features on the application like the user be able to chat with each other in private, and see the user that like your post. I will also make the page for the passengers to be able to book the taxi if there are going as a group. ReactJs will make it easy for me to put all this features, and also in future i will use Tailwind it's seem it's a good CSS framework to be able to play around it.
+I know for now the user can view each others profile i was having the reason to not do that but when i feel comfortable with other technologies I will implement that so that their can view each others profile but they will able to view only.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+### Install It Local
 
-### Useful resources
+To install it in your local machine:
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- npm install
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+### Things To Add
+
+- Create a .env file in config folder and add the following as key = value
+  - PORT = 4141 (it can be any port eg: 4000)
+  - DB_STRING = your database URI
+  - CLOUD_NAME = your cloudinary cloud name
+  - API_KEY = your cloudinary api key
+  - API_SECRET = your cloudinary api secret
+
+### Run
+
+- npm start
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's c
-
-
-
-
-
-
+- Portfolio - [zipho](https://zipho.netlify.app)
+- Linkedin - [@ziphozenkosi](https://linkedin.com/in/ziphozenkosi)
+- Twitter - [@ziphozenkosi478](https://www.twitter.com/ziphozenkosi478)
