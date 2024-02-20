@@ -1,5 +1,18 @@
 const mongoose = require("mongoose");
 
+/**
+ * This code  defines two Mongoose schemas: CommentSchema and PostSchema.
+ *
+ * CommentSchema represents a comment and includes fields for the comment text, the user who made the comment,
+ * the creation date, and the user's name.
+ *
+ * PostSchema represents a post and includes fields for the image URL, the cloudinary ID, the caption,
+ * the number of likes, the users who liked the post, the user who made the post, an array of comments,
+ * and the creation date.
+ *
+ * Both schemas are exported as Mongoose models.
+ */
+
 const CommentSchema = new mongoose.Schema({
   text: String,
   user: {
