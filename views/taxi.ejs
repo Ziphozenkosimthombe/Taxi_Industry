@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="/taxi.css" />
     <title>Document</title>
   </head>
@@ -45,20 +44,17 @@
                 <img
                   src="<%= posts[i].image %>"
                   alt="Taxi Driver Image"
-                  style="border-radius: 75px;"
-                />
+                  style="border-radius: 75px" />
               </td>
 
               <td>
                 <% if (user && user.role === 'rank manager') { %>
                 <form
                   action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
-                  method="POST"
-                >
+                  method="POST">
                   <button
                     class="btn btn-primary fa fa-check"
-                    type="submit"
-                  ></button>
+                    type="submit"></button>
                 </form>
                 <% } %>
               </td>
@@ -66,12 +62,10 @@
                 <% if (user && user.role === 'rank manager') { %>
                 <form
                   action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
-                  method="POST"
-                >
+                  method="POST">
                   <button
                     class="btn btn-danger fa fa-undo"
-                    type="submit"
-                  ></button>
+                    type="submit"></button>
                 </form>
                 <% } %>
               </td>

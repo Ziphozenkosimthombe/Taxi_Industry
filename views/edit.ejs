@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <title>Document</title>
-</head>
-<body>
-    
-    <% for (let i=0; i < posts.length; i++) { %>
-        <% if (posts[i]._id==texiId) { %>
-            <form action="/updateEdit/<%= posts[i]._id %>" method="POST">
-                <input type="number" name="number" value="<%= posts[i].number %>">
-                <input type="text" name="placeToDeliver" value="<%= posts[i].placeToDeliver %>">
-                <button type="submit" id="updateButton">confirm</button>
-            </form>
+  </head>
+  <body>
+    <% for (let i=0; i < posts.length; i++) { %> <% if (posts[i]._id==texiId) {
+    %>
+    <form action="/updateEdit/<%= posts[i]._id %>" method="POST">
+      <input type="number" name="number" value="<%= posts[i].number %>" />
+      <input
+        type="text"
+        name="placeToDeliver"
+        value="<%= posts[i].placeToDeliver %>" />
+      <button type="submit" id="updateButton">confirm</button>
+    </form>
 
-
-            <table id="taxiTable">
-                <thead>
-                    <tr>
-                        <th>DriversName</th>
-                        <th>placeToDeliver</th>
-                        <th>numberPlate</th>
-                        <th>Number</th>
-                        <th>Image</th>
-                        <th>Delete & Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= posts[i].userName %></td>
-                        <td><%= posts[i].placeToDeliver %></td>
-                        <td><%= posts[i].numberPlate %></td>
-                        <td><%= posts[i].number %></td>
-                        <td class="edit"><a href="/edit/<%= posts[i]._id %>"><i class="fa fa-edit"></i></a></td>
-                        <td class="fa fa-trash"></td>
-                        <td class="fa fa-check"></td>
-                        <a href="/taxiTable">Cancel</a>
-                    </tr>
-                </tbody>
-            </table>
-        <% } else { %> 
-                <table id="taxiTable">
-                    <thead>
-                        <tr>
-                            <th>DriversName</th>
-                            <th>placeToDeliver</th>
-                            <th>numberPlate</th>
-                            <th>Number</th>
-                            <th>Image</th>
-                            <th>Delete & Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><%= posts[i].userName%></td>
-                            <td><%= posts[i].placeToDeliver %></td>
-                            <td><%= posts[i].numberPlate %></td>
-                            <td><%= posts[i].number %></td>
-                            <td class="edit"><a href="/edit/<%= posts[i]._id %>"><i class="fa fa-edit"></i></a></td>
-                            <td class="fa fa-trash"></td>
-                            <td class="fa fa-check"></td>
-                            <a href="/">Cancel</a>
-                        </tr>
-                    </tbody>
-                </table>
-            <%} %>
-    <% } %>
-    <!-- <script type="text/javascript" src="/js/edit.js"></script> -->
-</body>
+    <table id="taxiTable">
+      <thead>
+        <tr>
+          <th>DriversName</th>
+          <th>placeToDeliver</th>
+          <th>numberPlate</th>
+          <th>Number</th>
+          <th>Image</th>
+          <th>Delete & Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= posts[i].userName %></td>
+          <td><%= posts[i].placeToDeliver %></td>
+          <td><%= posts[i].numberPlate %></td>
+          <td><%= posts[i].number %></td>
+          <td class="edit">
+            <a href="/edit/<%= posts[i]._id %>"><i class="fa fa-edit"></i></a>
+          </td>
+          <td class="fa fa-trash"></td>
+          <td class="fa fa-check"></td>
+          <a href="/taxiTable">Cancel</a>
+        </tr>
+      </tbody>
+    </table>
+    <% } else { %>
+    <table id="taxiTable">
+      <thead>
+        <tr>
+          <th>DriversName</th>
+          <th>placeToDeliver</th>
+          <th>numberPlate</th>
+          <th>Number</th>
+          <th>Image</th>
+          <th>Delete & Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= posts[i].userName%></td>
+          <td><%= posts[i].placeToDeliver %></td>
+          <td><%= posts[i].numberPlate %></td>
+          <td><%= posts[i].number %></td>
+          <td class="edit">
+            <a href="/edit/<%= posts[i]._id %>"><i class="fa fa-edit"></i></a>
+          </td>
+          <td class="fa fa-trash"></td>
+          <td class="fa fa-check"></td>
+          <a href="/">Cancel</a>
+        </tr>
+      </tbody>
+    </table>
+    <%} %> <% } %>
+  </body>
 </html>

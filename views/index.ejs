@@ -1,105 +1,141 @@
 <%- include('partials/header') -%>
-   <body class="bg-image" 
-   style="background-image: url('https://images.caxton.co.za/wp-content/uploads/sites/49/2018/10/VRKN58661.jpg'); background-repeat: no-repeat; background-size: cover;
-   height: 100%">
-        <div class="container">
-            <header class="navbar navbar-expand-lg navbar-light bg-dark  fixed-top border ">
-                <div class="container-fluid">
-                    <h1 class="navbar-brand fw-bold fs-1 text-white">Taxi Industry</h1>
-                    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon "></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse mt-3" id="navbarNav">
-                    <ul class="navbar-nav d-flex  justify-content-center w-100 fw-bold fs-4 cursor-pointer" style="margin-right: 100px;">
-                        <li class="nav-item hover-underline">
-                            <a class="nav-link text-white" href="/logout">LOGOUT</a>
-                        </li>
-                        <li class="nav-item hover-underline">
-                            <a class="nav-link text-white" href="/login">LOGIN</a>
-                        </li>
-                        <li class="nav-item hover-underline">
-                            <a class="nav-link text-white" href="/signup">SIGNUP</a>
-                        </li>
-                        <li class="nav-item hover-underline">
-                            <a href="#about" class="nav-link text-white">ABOUT</a>
-                        </li>
-                        <li class="nav-item hover-underline">
-                            <a href="#contact" class="nav-link text-white">CONTACT</a>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-            <div class="text-center lh-1 text-wrap text-uppercase fs-2 fw-bold border-bottom border-white" style="margin-top: 150px;">
-                <p class="text-white">
-                    The Taxi Industry Social Media application.<br>
-                    Also help the rank manger for his job to be more,<br>
-                    easy. so let's do this!!!...
-                </p>
-            </div>
-            <div class="text-center mt-5 border-bottom border-white" id="about">
-                <h1 class="text-white text-uppercase fs-1 fw-bold">About Us</h1>
-                <p class="text-white fs-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
-                     At molestiae dolor impedit vero ut, culpa velit blanditiis <br>
-                      unde corrupti necessitatibus veritatis est esse. Aliquid, <br>
-                      ex debitis aperiam quod dolor dignissimos? <br>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br>
-                      Quia veritatis fugit obcaecati iste <br>
-                       Totam repellendus quaerat laboriosam, dignissimos id optio<br>
-                        magnam eum natus possimus sed error officiis velit consequuntur!
-                </p>
-            </div>
-            <div class="text-center mt-5" id="contact">
-                <h1 class="text-uppercase text-white fs-1 fw-bold">Contact</h1>
-                <form action="/post/contact" method="POST">
-                  <div class="mb-3">
-                    <label for="email" class="form-label text-white fs-4 fw-bold">Your Email:</label>
-                    <input class="form-control" type="email" id="email" name="email" required autocomplete="off">
-                  </div>
-                  
-                  
-                  <div class="mb-3">
-                    <label for="subject" class="form-label text-white fs-4 fw-bold">Subject:</label>
-                    <input class="form-control" type="text" id="subject" name="subject" required autocomplete="off">
-                  </div>
-                  
-                  <div class="mb-3">
-                    <label for="message" class="form-label text-white fs-4 fw-bold">Message</label>
-                    <textarea class="form-control" id="message" name="message" required autocomplete="off"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary w-100" value="Upload">Submit</button>
-                </form>
-                <div class="mt-5 ">
-                    <img
-                    style="height: 4rem;"
-                    src="/imgs/linkedin.png"
-                    alt="My LinkedIn profile"
-                    onclick="location.href='https://www.linkedin.com/in/ziphozenkosi-ncayiyana-580326263/'"
-                    />
-                  
-                  <img
-                    style="height: 4rem;"
-                    src="/imgs/whatsapp.png"
-                    alt="My whatsapp profile"
-                    onclick="location.href='https://wa.me/27828399732'"
-                  />
-                  <img
-                    style="height: 4rem;"
-                    src="/imgs/twitter.png"
-                    alt="My Twitter profile"
-                    onclick="location.href='https://twitter.com/Ziphozenkosi478'"
-                  />
-                  <img
-                    style="height: 4rem;"
-                    src="/imgs/discord.png"
-                    alt="My discord profile"
-                    onclick="location.href='https://discord.gg/sm43NHap'"
-                  />
-                </div>
-              </div>
 
+<body
+  class="bg-image"
+  style="
+    background-image: url('https://images.caxton.co.za/wp-content/uploads/sites/49/2018/10/VRKN58661.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  ">
+  <div class="container">
+    <header
+      class="navbar navbar-expand-lg navbar-light bg-dark fixed-top border">
+      <div class="container-fluid">
+        <h1 class="navbar-brand fw-bold fs-1 text-white">Taxi Industry</h1>
+        <button
+          class="navbar-toggler bg-white"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse mt-3" id="navbarNav">
+        <ul
+          class="navbar-nav d-flex justify-content-center w-100 fw-bold fs-4 cursor-pointer"
+          style="margin-right: 100px">
+          <li class="nav-item hover-underline">
+            <a class="nav-link text-white" href="/logout">LOGOUT</a>
+          </li>
+          <li class="nav-item hover-underline">
+            <a class="nav-link text-white" href="/login">LOGIN</a>
+          </li>
+          <li class="nav-item hover-underline">
+            <a class="nav-link text-white" href="/signup">SIGNUP</a>
+          </li>
+          <li class="nav-item hover-underline">
+            <a href="#about" class="nav-link text-white">ABOUT</a>
+          </li>
+          <li class="nav-item hover-underline">
+            <a href="#contact" class="nav-link text-white">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div
+      class="text-center lh-1 text-wrap text-uppercase fs-2 fw-bold border-bottom border-white"
+      style="margin-top: 150px">
+      <p class="text-white">
+        The Taxi Industry Social Media application.<br />
+        Also help the rank manger for his job to be more,<br />
+        easy. so let's do this!!!...
+      </p>
+    </div>
+    <div class="text-center mt-5 border-bottom border-white" id="about">
+      <h1 class="text-white text-uppercase fs-1 fw-bold">About Us</h1>
+      <p class="text-white fs-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+        At molestiae dolor impedit vero ut, culpa velit blanditiis <br />
+        unde corrupti necessitatibus veritatis est esse. Aliquid, <br />
+        ex debitis aperiam quod dolor dignissimos? <br />
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br />
+        Quia veritatis fugit obcaecati iste <br />
+        Totam repellendus quaerat laboriosam, dignissimos id optio<br />
+        magnam eum natus possimus sed error officiis velit consequuntur!
+      </p>
+    </div>
+    <div class="text-center mt-5" id="contact">
+      <h1 class="text-uppercase text-white fs-1 fw-bold">Contact</h1>
+      <form action="/post/contact" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label text-white fs-4 fw-bold"
+            >Your Email:</label
+          >
+          <input
+            class="form-control"
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="off" />
         </div>
-   </body>
+
+        <div class="mb-3">
+          <label for="subject" class="form-label text-white fs-4 fw-bold"
+            >Subject:</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="subject"
+            name="subject"
+            required
+            autocomplete="off" />
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label text-white fs-4 fw-bold"
+            >Message</label
+          >
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            required
+            autocomplete="off"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" value="Upload">
+          Submit
+        </button>
+      </form>
+      <div class="mt-5">
+        <img
+          style="height: 4rem"
+          src="/imgs/linkedin.png"
+          alt="My LinkedIn profile"
+          onclick="location.href='https://www.linkedin.com/in/ziphozenkosi-ncayiyana-580326263/'" />
+
+        <img
+          style="height: 4rem"
+          src="/imgs/whatsapp.png"
+          alt="My whatsapp profile"
+          onclick="location.href='https://wa.me/27828399732'" />
+        <img
+          style="height: 4rem"
+          src="/imgs/twitter.png"
+          alt="My Twitter profile"
+          onclick="location.href='https://twitter.com/Ziphozenkosi478'" />
+        <img
+          style="height: 4rem"
+          src="/imgs/discord.png"
+          alt="My discord profile"
+          onclick="location.href='https://discord.gg/sm43NHap'" />
+      </div>
+    </div>
+  </div>
+</body>
 <%- include('partials/index-footer') -%>
