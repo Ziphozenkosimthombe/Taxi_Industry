@@ -1,7 +1,9 @@
 # Taxi Industry Socila Media.
 
 This the Taxi Social media application, it's will help the drivers to connect more easily, But it will help taxi Rank Mananger the most, he will be able to collect the drivers information easy from the database without writing each drivers information in the book.
-![](./public/imgs/Screenshot-2.png)
+
+https://github.com/Ziphozenkosimthombe/Taxi_Industry/assets/123859903/e73a3764-afb1-4f32-b8f9-a4009d8ad8cd
+
 
 ## Table of contents
 
