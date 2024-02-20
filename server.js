@@ -1,3 +1,12 @@
+/**
+ *
+ * This is an Express server setup with MongoDB and Passport authentication.
+ * It uses EJS for views, serves static files from "public", and parses request bodies in URL-encoded and JSON formats.
+ * It uses method-override for PUT and DELETE methods, stores sessions in MongoDB, and uses flash messages.
+ * Routes are defined for "/" and "/post".
+ * The server connects to the database and starts listening on a specified port.
+ */
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -43,7 +52,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  }),
+  })
 );
 
 // Passport middleware
@@ -59,8 +68,8 @@ app.use("/post", postRoutes);
 
 //Server Running
 
-connectDB().then(()=>{
-  app.listen(process.env.PORT, () =>{
-    console.log(`Sever is running, you better catch it! `)
-  })
-})
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`Sever is running, you better catch it! `);
+  });
+});

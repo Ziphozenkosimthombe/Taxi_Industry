@@ -1,110 +1,145 @@
 <%- include('partials/header') -%>
 <body class="bg-secondary">
-
   <main class="container">
-      <header class="navbar navbar-expand-lg navbar-light  fixed-top border bg-white">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="/feed">
-                  <img src="/imgs/default.png" alt="logo-taxi" sizes="32x32" class="logo__taxi"/>
+    <header
+      class="navbar navbar-expand-lg navbar-light fixed-top border bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/feed">
+          <img
+            src="/imgs/default.png"
+            alt="logo-taxi"
+            sizes="32x32"
+            class="logo__taxi" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mt-3" id="navbarNav">
+          <ul class="navbar-nav d-flex justify-content-lg-between w-100">
+            <li class="nav-item hover-underline">
+              <a class="nav-link fs-3 mx-5 fw-bold" href="/logout">LOGOUT</a>
+            </li>
+            <li class="nav-item hover-underline">
+              <a class="nav-link fs-3 fw-bold" href="/taxiTable">TAXTABLE</a>
+            </li>
+            <li class="nav-item hover-underline">
+              <a class="nav-link" href="/profile">
+                <img
+                  class="mx-4 profile__img"
+                  src="<%= user.image %>"
+                  alt="Taxi Driver Image" />
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse mt-3" id="navbarNav">
-                  <ul class="navbar-nav d-flex justify-content-lg-between  w-100 ">
-                      <li class="nav-item hover-underline">
-                          <a class="nav-link fs-3 mx-5 fw-bold" href="/logout">LOGOUT</a>
-                      </li>
-                      <li class="nav-item hover-underline">
-                          <a class="nav-link  fs-3 fw-bold" href="/taxiTable">TAXTABLE</a>
-                      </li>
-                      <li class="nav-item hover-underline">
-                          <a class="nav-link " href="/profile">
-                            <img
-                              class="mx-4  profile__img"
-                              src="<%= user.image %>"
-                              alt="Taxi Driver Image"
-                            />
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </header>
-      <section class="post__section">
-        <div class="row justify-content-center align-items-center">
-            <div class="d-flex flex-wrap justify-content-center align-items-stretch">
-              <% posts.forEach(function(post) { %>
-                <div class="col-md-8 mt-4">
-                  <div class="card h-100">
-                    <a href="<%= post.user.image %>" class="d-flex text-decoration-none">
-                      <img
-                        class="mx-4 driver__img"
-                        src="<%= post.user.image %>"
-                        alt="Taxi Driver Image"
-                        
-                      />
-                      <% if (post.user && post.user.userName) { %>
-                        <p class="card-text mt-2 fs-3 text-dark hover-underline"><strong><%= post.user.userName %></strong></p>
-                      <% } else { %>
-                        <p class="card-text"><strong>Unknown</strong></p>
-                      <% } %> 
-                    </a>
-                      <p class="card-text mx-4 mt-3"><%= post.caption %></p>
-                    <a href="<%= post.image %>">
-                      <img class="card-img-top post__img" src="<%= post.image %>" alt="Card image">
-                    </a>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <form
-                            class="col-1"
-                            action="/post/likePost/<%= post._id %>?_method=PUT"
-                            method="POST"
-                          >
-                            <button class=" btn btn-primary fa fa-heart heart__btn" type="submit"></button>
-                      
-                        </form>
-                        <% if (post.user && post.user._id && post.user._id.toString() === user.id.toString()) { %>
-                          <form action="/post/deletePost/<%= post._id %>?_method=DELETE" method="POST">
-                            <button class="ml-10 btn btn-primary fa fa-trash" type="submit"></button>
-                          </form>
-                        <% } %>
-                      </div>
-                      <h3 class="">Likes: <%= post.likes %></h3>
-                    
-                    
-                      <!-- Comments Section -->
-                      <div class="comments-section">
-                        <h5>Comments:</h5>
-                        <ul class="list-unstyled ">
-                          <% post.comments.forEach(function(comment) { %>
-                            <li class="d-flex ">
-                              <strong><a href="" class="text-decoration-none"><%= comment.userName %>:</a></strong> <%= comment.text %>
-                              <% if(comment.user == user.id){ %>
-                                <form action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
-                                  <button type="submit" class="btn btn-danger fa fa-trash mx-5"></button>
-                                </form>
-                              <% } %>
-                            </li>
-                          <% }); %>
-                        </ul>
-                        <!-- Form to Add Comment -->
-                        <form action="/post/<%= post._id %>/comment" method="post">
-                          <div class="form-group">
-                            <input type="text" name="text" placeholder="Add a comment" class="form-control" required autocomplete="off">
-                          </div>
-                          <button type="submit" class="btn btn-primary w-100">Add</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="post__section">
+      <div class="row justify-content-center align-items-center">
+        <div
+          class="d-flex flex-wrap justify-content-center align-items-stretch">
+          <% posts.forEach(function(post) { %>
+          <div class="col-md-8 mt-4">
+            <div class="card h-100">
+              <a
+                href="<%= post.user.image %>"
+                class="d-flex text-decoration-none">
+                <img
+                  class="mx-4 driver__img"
+                  src="<%= post.user.image %>"
+                  alt="Taxi Driver Image" />
+                <% if (post.user && post.user.userName) { %>
+                <p class="card-text mt-2 fs-3 text-dark hover-underline">
+                  <strong><%= post.user.userName %></strong>
+                </p>
+                <% } else { %>
+                <p class="card-text"><strong>Unknown</strong></p>
+                <% } %>
+              </a>
+              <p class="card-text mx-4 mt-3"><%= post.caption %></p>
+              <a href="<%= post.image %>">
+                <img
+                  class="card-img-top post__img"
+                  src="<%= post.image %>"
+                  alt="Card image" />
+              </a>
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <form
+                    class="col-1"
+                    action="/post/likePost/<%= post._id %>?_method=PUT"
+                    method="POST">
+                    <button
+                      class="btn btn-primary fa fa-heart heart__btn"
+                      type="submit"></button>
+                  </form>
+                  <% if (post.user && post.user._id && post.user._id.toString()
+                  === user.id.toString()) { %>
+                  <form
+                    action="/post/deletePost/<%= post._id %>?_method=DELETE"
+                    method="POST">
+                    <button
+                      class="ml-10 btn btn-primary fa fa-trash"
+                      type="submit"></button>
+                  </form>
+                  <% } %>
                 </div>
-              <% }); %>
+                <h3 class="">Likes: <%= post.likes %></h3>
+
+                <!-- Comments Section -->
+                <div class="comments-section">
+                  <h5>Comments:</h5>
+                  <ul class="list-unstyled">
+                    <% post.comments.forEach(function(comment) { %>
+                    <li class="d-flex">
+                      <strong
+                        ><a href="" class="text-decoration-none"
+                          ><%= comment.userName %>:</a
+                        ></strong
+                      >
+                      <%= comment.text %> <% if(comment.user == user.id){ %>
+                      <form
+                        action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE"
+                        method="post">
+                        <button
+                          type="submit"
+                          class="btn btn-danger fa fa-trash mx-5"></button>
+                      </form>
+                      <% } %>
+                    </li>
+                    <% }); %>
+                  </ul>
+                  <!-- Form to Add Comment -->
+                  <form action="/post/<%= post._id %>/comment" method="post">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="text"
+                        placeholder="Add a comment"
+                        class="form-control"
+                        required
+                        autocomplete="off" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                      Add
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-          </div>  
-      </section>  
-    </main>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 <%- include('partials/footer') -%>
