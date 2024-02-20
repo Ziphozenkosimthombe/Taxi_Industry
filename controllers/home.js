@@ -1,4 +1,18 @@
+// require nodemailer
 const nodemailer = require("nodemailer");
+
+/**
+ * This code snippet exports an object with two methods: getIndex and sendEmail.
+ *
+ * - getIndex: This method renders the "index.ejs" template.
+ *
+ * - sendEmail: This method sends an email using the nodemailer library. It creates a transporter
+ *   using the Gmail service and SMTP settings. It takes the sender's email, subject, and message
+ *   from the request body and sends an email to the specified recipient. If the email sending is
+ *   successful, it logs the response and sends a success message. If there is an error, it logs
+ *   the error and sends an error response.
+ *
+ */
 
 module.exports = {
   getIndex: (req, res) => {
@@ -13,7 +27,7 @@ module.exports = {
         port: 465,
         secure: true,
         auth: {
-          user:  "ziphoncayiyana@gmail.com",
+          user: "ziphoncayiyana@gmail.com",
           pass: "bjup udgo zmsd uhsh",
         },
       });
@@ -33,12 +47,14 @@ module.exports = {
           return res.status(500).send("Error while sending email");
         } else {
           console.log("Email sent: ", info.response);
-          return res.send('Thank you for your message. We will get back to you soon!');
+          return res.send(
+            "Thank you for your message. We will get back to you soon!"
+          );
         }
       });
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       return res.status(500).send("Error while sending email");
     }
-  }
+  },
 };

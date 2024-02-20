@@ -3,6 +3,15 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
+/**
+ * This code exports several functions related to user authentication and account management.
+ *
+ * - getLogin: Renders the login page if the user is not logged in, otherwise redirects to the feed page.
+ * - postLogin: Handles the login form submission, validates the email and password, and authenticates the user using passport.
+ * - logout: Logs out the user, destroys the session, and redirects to the home page.
+ * - getSignup: Renders the signup page if the user is not logged in, otherwise redirects to the feed page.
+ * - postSignup: Handles the signup form submission, uploads the user's image to cloudinary, validates the email, password, and other fields, checks for existing users, creates a new user, and logs in the user.
+ */
 
 exports.getLogin = (req, res) => {
   if (req.user) {
