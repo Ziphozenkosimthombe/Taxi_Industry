@@ -1,14 +1,28 @@
-
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const User = require("../models/User");
 
-
-
+/**
+ * This Code exports an object containing various functions for handling profile, feed, taxi, and post operations.
+ * Each function is an asynchronous function that handles specific operations such as fetching profile data, creating a new post, marking a task as complete and uncomplete, deleting the post, adding the comment to the post, like the post, etc...
+ * These functions are used in different routes to perform the corresponding operations.
+ *
+ * getProfile: Fetches and sends the posts made by the logged-in user to the profile.ejs template.
+ * getFeed: Fetches all posts, sorts them by likes in descending order, and sends them to the feed.ejs template.
+ * getTable: Fetches all users, sorts them by number in ascending order, counts the users who have not completed their tasks, and sends this data to the taxi.ejs template.
+ * getEdit: Fetches all users, sorts them by number in ascending order, and sends this data along with the id of the user to be edited to the edit.ejs template.
+ * createPost: Uploads an image to Cloudinary, creates a new post with the uploaded image and the Caption, and redirects the user to the profile page.
+ * markComplete: Marks a user's task as complete and redirects the user to the taxi table page.
+ * markUncomplete: Marks a user's task as incomplete and redirects the user to the taxi table page.
+ * likePost: Increments the likes of a post by 1 and redirects the user to the feed page.
+ * updateEdit: Updates the number and placeToDeliver fields of a user and redirects the user to the taxi table page.
+ * deletePost: Deletes a post and its associated image from Cloudinary and redirects the user to the feed page.
+ * addComment: Adds a comment to a post and redirects the user to the post page.
+ * deleteComment: Deletes a comment from a post and redirects the user to the post page.
+ */
 
 module.exports = {
   getProfile: async (req, res) => {
-    // console.log(req.user);
     try {
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
@@ -36,7 +50,7 @@ module.exports = {
       const texiItems = await User.find().sort({ number: 1 });
       const itemsLeft = await User.countDocuments({ complete: false });
       const user = req.user;
-      res.render("taxi.ejs", { posts: texiItems, left:itemsLeft, user });
+      res.render("taxi.ejs", { posts: texiItems, left: itemsLeft, user });
     } catch (err) {
       console.log(err);
     }
