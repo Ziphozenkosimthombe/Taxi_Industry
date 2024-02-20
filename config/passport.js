@@ -2,6 +2,12 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = require("../models/User");
 
+/**
+ * This code snippet exports a function that configures the passport authentication strategy.
+ * It uses the LocalStrategy from the passport-local module to authenticate users based on their email and password.
+ * The function takes a passport object as a parameter and sets up the authentication strategy.
+ */
+
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(
@@ -25,8 +31,8 @@ module.exports = function (passport) {
         } catch (err) {
           return done(err);
         }
-      },
-    ),
+      }
+    )
   );
 
   passport.serializeUser((user, done) => {
