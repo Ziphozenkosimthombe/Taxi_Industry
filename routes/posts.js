@@ -2,8 +2,29 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/multer");
 const postsController = require("../controllers/posts");
-const homeController = require("../controllers/home")
+const homeController = require("../controllers/home");
 const { ensureAuth } = require("../middleware/auth");
+
+/**
+ * This code snippet represents a router module in an Express.js application.
+ * It defines various routes for handling posts, comments.
+ * The routes are organized using the Express Router and are associated with their respective controller functions.
+ * Middleware functions are used to ensure authentication and handle file uploads.
+ *
+ * @module router
+ * @requires express
+ * @requires ../middleware/multer
+ * @requires ../controllers/posts
+ * @requires ../controllers/home
+ * @requires ../middleware/auth
+ *
+ * @example
+ * // Import the router module
+ * const router = require("./router");
+ *
+ * // Use the router in the Express app
+ * app.use("/posts", router);
+ */
 
 //Post Routes
 //Since linked from server js treat each path as:
@@ -25,7 +46,7 @@ router.delete("/deletePost/:id", postsController.deletePost);
 router.delete(
   "/:postId/comment/:commentId",
   ensureAuth,
-  postsController.deleteComment,
+  postsController.deleteComment
 );
 
 module.exports = router;
