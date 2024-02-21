@@ -1,86 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="/taxi.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <section class="rows">
-      <section class="column__table">
-        <h2>Rank Mananger working space</h2>
-        <h2>Car left on the rank: <%= left %></h2>
-        <table id="taxiTable">
-          <thead>
-            <tr>
-              <th>UserName</th>
-              <th>placeToDeliver</th>
-              <th>numberPlate</th>
-              <th>Number</th>
-              <th>Image</th>
-              <th>Delete & Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for(let i=0; i < posts.length; i++) {%>
-            <tr class="texi__table" data-id="<%=posts[i]._id%>">
-              <% if (posts[i].complete === true) {%>
-              <td class="complete"><%= posts[i].userName %></td>
-              <td class="complete"><%= posts[i].placeToDeliver %></td>
-              <td class="complete"><%= posts[i].numberPlate %></td>
-              <td class="complete"><%= posts[i].number %></td>
-              <%} else{%>
-              <td><%= posts[i].userName %></td>
-              <td><%= posts[i].placeToDeliver %></td>
-              <td><%= posts[i].numberPlate %></td>
-              <td><%= posts[i].number %></td>
+<%- include('partials/header') -%>
+<body class="container table__body">
+  <section class="d-flex justify-content-between">
+    <section class="column__table">
+      <div class="text-center text-danger">
+        <h2 class="fw-bold">Rank Mananger working space</h2>
+        <h2 class="fw-bold">Car left on the rank: <%= left %></h2>
+      </div>
 
-              <%}%>
-              <td>
-                <img
-                  src="<%= posts[i].image %>"
-                  alt="Taxi Driver Image"
-                  style="border-radius: 75px" />
-              </td>
+      <table class="w-100 mx-2 pm-2">
+        <thead>
+          <tr>
+            <th>UserName</th>
+            <th>placeToDeliver</th>
+            <th>numberPlate</th>
+            <th>Number</th>
+            <th>Image</th>
+            <th>Complete</th>
+            <th>Uncomplete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < posts.length; i++) {%>
+          <tr data-id="<%=posts[i]._id%>">
+            <% if (posts[i].complete === true) {%>
+            <td class="complete"><%= posts[i].userName %></td>
+            <td class="complete"><%= posts[i].placeToDeliver %></td>
+            <td class="complete"><%= posts[i].numberPlate %></td>
+            <td class="complete"><%= posts[i].number %></td>
+            <%} else{%>
+            <td><%= posts[i].userName %></td>
+            <td><%= posts[i].placeToDeliver %></td>
+            <td><%= posts[i].numberPlate %></td>
+            <td><%= posts[i].number %></td>
 
-              <td>
-                <% if (user && user.role === 'rank manager') { %>
-                <form
-                  action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
-                  method="POST">
-                  <button
-                    class="btn btn-primary fa fa-check"
-                    type="submit"></button>
-                </form>
-                <% } %>
-              </td>
-              <td>
-                <% if (user && user.role === 'rank manager') { %>
-                <form
-                  action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
-                  method="POST">
-                  <button
-                    class="btn btn-danger fa fa-undo"
-                    type="submit"></button>
-                </form>
-                <% } %>
-              </td>
-              <td>
-                <% if (user && user.role === 'rank manager') { %>
-                <a href="/edit/<%= posts[i]._id%>"
-                  ><i class="fa fa-edit"></i
-                ></a>
-                <% } %>
-              </td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-      </section>
+            <%}%>
+            <td>
+              <img
+                class="image__table"
+                src="<%= posts[i].image %>"
+                alt="Taxi Driver Image"
+                style="border-radius: 75px" />
+            </td>
+
+            <td>
+              <% if (user && user.role === 'rank manager') { %>
+              <form
+                action="/post/markComplete/<%= posts[i]._id %>?_method=PUT"
+                method="POST">
+                <button
+                  class="btn btn-primary fa fa-check"
+                  type="submit"></button>
+              </form>
+              <% } %>
+            </td>
+            <td>
+              <% if (user && user.role === 'rank manager') { %>
+              <form
+                action="/post/markUncomplete/<%= posts[i].id %>?_method=PUT"
+                method="POST">
+                <button
+                  class="btn btn-danger fa fa-undo"
+                  type="submit"></button>
+              </form>
+              <% } %>
+            </td>
+            <td>
+              <% if (user && user.role === 'rank manager') { %>
+              <a href="/edit/<%= posts[i]._id%>"><i class="fa fa-edit"></i></a>
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
     </section>
-  </body>
-</html>
+  </section>
+</body>
+<%- include('partials/footer') -%>
