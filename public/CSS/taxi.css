@@ -30,9 +30,3 @@ th {
   color: green;
   text-decoration: line-through;
 }
-
-td a {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
