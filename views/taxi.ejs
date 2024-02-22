@@ -16,6 +16,7 @@
 
       <table class="w-100 mx-2 pm-2">
         <thead>
+          <% if (user && user.role === 'rank manager') { %>
           <tr>
             <th>UserName</th>
             <th>placeToDeliver</th>
@@ -26,6 +27,15 @@
             <th>Uncomplete</th>
             <th>Edit</th>
           </tr>
+          <% } else { %>
+          <tr>
+            <th>UserName</th>
+            <th>placeToDeliver</th>
+            <th>numberPlate</th>
+            <th>Number</th>
+            <th>Image</th>
+          </tr>
+          <% } %>
         </thead>
         <tbody>
           <% for(let i=0; i < posts.length; i++) {%>
