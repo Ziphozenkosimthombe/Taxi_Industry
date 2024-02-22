@@ -154,6 +154,7 @@ I know for now the user can view each others profile i was having the reason to 
 
 To install it in your local machine:
 
+- clone the repository
 - npm install
 
 ### Things To Add
