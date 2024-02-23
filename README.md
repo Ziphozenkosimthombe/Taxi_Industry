@@ -4,7 +4,6 @@ This the Taxi Social media application, it's will help the drivers to connect mo
 
 https://github.com/Ziphozenkosimthombe/Taxi_Industry/assets/123859903/e73a3764-afb1-4f32-b8f9-a4009d8ad8cd
 
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -17,6 +16,7 @@ https://github.com/Ziphozenkosimthombe/Taxi_Industry/assets/123859903/e73a3764-a
   - [Things To Add](#things-to-add)
   - [Run](#run)
 - [Author](#author)
+- [Contributing](#contributing)
 
 ## Overview
 
@@ -175,3 +175,17 @@ To install it in your local machine:
 - Portfolio - [zipho](https://zipho.netlify.app)
 - Linkedin - [@ziphozenkosi](https://linkedin.com/in/ziphozenkosi)
 - Twitter - [@ziphozenkosi478](https://www.twitter.com/ziphozenkosi478)
+
+## Contributing
+
+We welcome contributions from the community to help improve Pillow.com. If you'd like to contribute, please follow these guidelines:
+
+1. Fork the repository on GitHub.
+
+2. Make your desired changes in a new branch.
+
+3. Ensure that your code follows the project's coding standards and conventions.
+
+4. Test your changes thoroughly.
+
+5. Submit a pull request with a clear description of your changes and why they are necessary.
