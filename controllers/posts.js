@@ -173,7 +173,6 @@ module.exports = {
       res.redirect("/feed");
     }
   },
-
   addComment: async (req, res) => {
     try {
       const { postId } = req.params;
@@ -235,4 +234,33 @@ module.exports = {
       res.status(500).send("Internal Server Error");
     }
   },
+
+  // deleteAccountAndPosts: async (req, res) => {
+  //   try {
+  //     // Find user by ID
+  //     const user = await User.findById(req.user.id);
+  //     if (!user) {
+  //       return res.status(404).send("User not found");
+  //     }
+
+  //     // Find and delete user's posts
+  //     const userPosts = await Post.find({ user: req.user.id });
+  //     for (const post of userPosts) {
+  //       // Delete image from Cloudinary
+  //       await cloudinary.uploader.destroy(post.cloudinaryId);
+  //       // Delete post from database
+  //       await post.deleteOne();
+  //     }
+
+  //     // Delete user
+  //     await user.deleteOne();
+
+  //     console.log("User account and associated posts deleted successfully");
+  //     // Redirect user to a relevant page (e.g., home page or login page)
+  //     res.redirect("/");
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).send("Internal Server Error");
+  //   }
+  // },
 };

@@ -48,5 +48,4 @@ router.delete(
   ensureAuth,
   postsController.deleteComment
 );
-
 module.exports = router;
