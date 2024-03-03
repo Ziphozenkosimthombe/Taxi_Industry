@@ -178,7 +178,7 @@ To install it in your local machine:
 
 ## Contributing
 
-We welcome contributions from the community to help improve Pillow.com. If you'd like to contribute, please follow these guidelines:
+We welcome contributions from the community to help improve taxi_industry.me. If you'd like to contribute, please follow these guidelines:
 
 1. Fork the repository on GitHub.
 
