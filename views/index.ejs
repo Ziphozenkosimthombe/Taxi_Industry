@@ -67,7 +67,20 @@
     </div>
     <div class="text-center mt-5" id="contact">
       <h1 class="text-uppercase text-white fs-1 fw-bold">Contact</h1>
-      <form action="/post/contact" method="POST">
+      <form action="/post/contact" method="POST" class="contact-form">
+        <div class="mb-3">
+          <label for="email" class="form-label text-white fs-4 fw-bold"
+            >Your FullName:</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="off" />
+        </div>
+
         <div class="mb-3">
           <label for="email" class="form-label text-white fs-4 fw-bold"
             >Your Email:</label
