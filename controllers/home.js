@@ -57,4 +57,5 @@ module.exports = {
       console.error("Error sending email: ", err);
       return res.status(500).send("Error while sending email");
     }
+  }
 };
