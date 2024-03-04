@@ -33,4 +33,3 @@ contactForm.addEventListener("submit", (e) => {
   // Convert formData to JSON and send it
   xhr.send(JSON.stringify(formData));
 });
-

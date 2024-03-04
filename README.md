@@ -40,7 +40,8 @@ https://github.com/Ziphozenkosimthombe/Taxi_Industry/assets/123859903/e73a3764-a
 - [MongoDb](https://www.mongodb.com/) - an open source NoSQL database management program.
 - [Nodemailer](https://nodemailer.com/) - Nodejs application module.
 - [Bcrypt](https://bcrypt-generator.com/) - A library to help with hash passwords.
-- [Render](https://render.com) - projectc hosting platform.
+- [DigitalOcean](https://digitalocean.com) - a cloud infrastructure provider where you can purchase virtual servers (droplets) to host your applications and websites.
+- [Nginx](https://www.nginx.com/) - a high-performance web server, reverse proxy server, load balancer, and HTTP cache that you can use to efficiently serve web content, handle incoming requests, and distribute traffic to backend servers.
 - [Namecheap](https://www.namecheap.com/) - getting the domain name form my project
 
 ### What I learned
