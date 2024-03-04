@@ -19,42 +19,42 @@ module.exports = {
     res.render("index.ejs");
   },
   sendEmail: async (req, res) => {
-    let transporter;
     try {
-      transporter = nodemailer.createTransport({
-        service: "Gmail",
+      console.log(req.body);
+
+      // Create transporter
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
-          user: "ziphoncayiyana@gmail.com",
-          pass: "bjup udgo zmsd uhsh",
+          user: process.env.USER,
+          pass: process.env.PASS,
         },
       });
 
-      // mailOptions
+      // Set mailOptions
       const mailOptions = {
-        from: req.body.email, // sender's email
-        to: "ziphoncayiyana@gmail.com", // your email
-        subject: req.body.subject, // Subject from form
-        text: req.body.message, // Message from form
+        from: req.body.email,
+        to: "ziphoncayiyana@gmail.com",
+        subject: `Message from ${req.body.email}: ${req.body.subject}`,
+        text: req.body.message,
       };
 
-      // feedback massage
+      // Send mail
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error("Error sending email: ", error);
           return res.status(500).send("Error while sending email");
         } else {
-          console.log("Email sent: ", info.response);
-          return res.send(
-            "Thank you for your message. We will get back to you soon!"
-          );
+          console.log("Email sent: " + info.response);
+          res.send("success");
+          res.redirect("/index");
         }
       });
     } catch (err) {
-      console.log(err);
+      console.error("Error sending email: ", err);
       return res.status(500).send("Error while sending email");
     }
-  },
 };

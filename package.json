@@ -1,5 +1,5 @@
 {
-  "name":"taxi-industry-social-media",
+  "name": "taxi-industry-social-media",
   "version": "1.0.0",
   "description": "main thing to help rank mananger to be able to write or group the taxis in the application by filling the form and fetch the drivers data when he needs it's.",
   "main": "server.js",
@@ -28,7 +28,8 @@
     "nodemon": "^3.0.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "validator": "^13.6.0"
+    "validator": "^13.6.0",
+    "ws": "^8.16.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
